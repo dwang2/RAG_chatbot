@@ -1,0 +1,187 @@
+# RAG Chatbot Project Rules and Best Practices
+
+# Import Rules
+1. Always import types from typing before they're used
+2. Organize imports in this order:
+   - Standard library imports
+   - Third-party imports
+   - Local application imports
+3. Avoid circular imports
+4. Import logging configuration early in the import chain
+
+# Type Hinting Rules
+1. Use proper type hints for all function parameters and return values
+2. Use specific types (List, Dict, Tuple) from typing module
+3. Use Any for parameters that can accept multiple types
+4. Document complex type hints with comments
+
+# Logging Rules
+1. Use centralized logging configuration from logging_config.py
+2. Initialize logger at module level
+3. Use appropriate log levels (INFO, ERROR, WARNING)
+4. Include context in log messages
+5. Log both to console and file
+
+# Error Handling Rules
+1. Use try-except blocks for all operations that might fail
+2. Log errors with context
+3. Re-raise exceptions after logging
+4. Provide meaningful error messages
+
+# Code Organization Rules
+1. Keep functions focused and single-purpose
+2. Document all functions with docstrings
+3. Use consistent naming conventions
+4. Group related functionality in modules
+
+# Testing Rules
+1. Write unit tests for all functions
+2. Test error cases and edge conditions
+3. Mock external dependencies in tests
+4. Use pytest for testing
+
+# Documentation Rules
+1. Include docstrings for all modules, classes, and functions
+2. Document parameters and return values
+3. Include examples in docstrings where helpful
+4. Keep README.md up to date
+
+# Version Control Rules
+1. Commit related changes together
+2. Write clear commit messages
+3. Use feature branches for new functionality
+4. Review code before merging
+
+# Performance Rules
+1. Use appropriate data structures
+2. Optimize for readability first
+3. Profile before optimizing
+4. Document performance considerations
+
+# Security Rules
+1. Never hardcode sensitive information
+2. Use environment variables for configuration
+3. Validate all input data
+4. Sanitize output data
+
+# Maintenance Rules
+1. Keep dependencies up to date
+2. Remove unused code
+3. Refactor when necessary
+4. Document technical debt
+
+# Model Configuration Rules
+1. Use environment variables for all model settings
+2. Document all model parameters in .env file
+3. Include model-specific configurations
+4. Set appropriate temperature and sampling parameters
+5. Configure stop sequences for better response control
+6. Use repeat penalty to prevent repetitive responses
+7. Set appropriate context length for the model
+8. Configure thread count based on available resources
+
+# Environment Management Rules
+1. Keep .env file in version control with example values
+2. Document all environment variables
+3. Use consistent naming conventions for variables
+4. Group related settings together
+5. Include comments for clarity
+6. Validate environment variables on startup
+7. Provide default values for optional settings
+8. Document required vs optional variables
+
+# Lessons Learned
+1. Import Chain Issues:
+   - Always check the entire import chain when debugging import errors
+   - Circular imports can cause silent failures
+   - Import order matters, especially for type hints
+
+2. Type Hint Debugging:
+   - Missing type imports cause NameError, not TypeError
+   - Type hints must be imported before they're used in any file
+   - Use Any for streamlit file uploader objects
+
+3. Logging Configuration:
+   - Logger must be initialized before any logging calls
+   - Centralized logging prevents duplicate handlers
+   - Logging configuration should be imported early
+
+4. Error Handling:
+   - Always include context in error messages
+   - Log errors before re-raising them
+   - Use specific exception types when possible
+
+5. Code Structure:
+   - Keep utility functions in separate modules
+   - Use __init__.py for clean imports
+   - Document all public functions and classes
+
+6. Debugging Process:
+   - Start with the error message and traceback
+   - Check import chains first
+   - Verify type hints and imports
+   - Test changes incrementally
+
+7. Best Practices:
+   - Write clear, descriptive error messages
+   - Use consistent logging patterns
+   - Document all changes in commit messages
+   - Test changes before committing
+
+8. Model Integration:
+   - Initialize models with explicit error handling
+   - Use batch processing for large datasets
+   - Disable progress bars in production
+   - Force CPU usage for stability
+   - Use local model caching
+   - Normalize embeddings for better performance
+   - Validate inputs before processing
+   - Handle empty inputs gracefully
+   - Monitor memory usage with batch processing
+   - Use appropriate batch sizes (32-64) for embeddings
+   - Disable warnings that might cause issues
+   - Create necessary directories before use
+   - Use specific model settings for stability
+   - Implement proper cleanup in error cases
+
+9. LangGraph Implementation:
+   - Use TypedDict for state management
+   - Define clear state transitions
+   - Keep nodes focused and single-purpose
+   - Use proper error handling in each node
+   - Document state structure and transitions
+   - Implement proper logging in each node
+   - Use type hints for state and transitions
+   - Keep graph structure simple and maintainable
+   - Handle edge cases in state transitions
+   - Use proper state initialization
+   - Implement proper cleanup in error cases
+   - Document graph structure and flow
+   - Use appropriate node naming conventions
+   - Keep state modifications explicit
+   - Implement proper error propagation
+   - Use appropriate logging levels for different operations
+   - Document state dependencies
+   - Keep graph edges clear and documented
+   - Use proper state validation
+   - Implement proper state recovery
+
+10. Model Configuration:
+    - Different models require different parameter settings
+    - Stop sequences are crucial for response control
+    - Temperature affects response creativity
+    - Context length impacts memory usage
+    - Thread count affects performance
+    - Repeat penalty prevents repetitive responses
+    - Top-k sampling improves response quality
+    - Model-specific parameters must be documented
+
+11. Environment Management:
+    - Centralize all configuration in .env
+    - Document all environment variables
+    - Use consistent naming conventions
+    - Validate configurations on startup
+    - Provide clear examples in .env.example
+    - Group related settings together
+    - Include comments for clarity
+    - Document required vs optional settings 
