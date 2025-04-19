@@ -44,9 +44,7 @@ test_*.pkl
 # Data
 data/*
 data/**/*
-!data/
-!data/*/
-!data/**/.gitkeep
+!data/.gitkeep
 
 # Vector Stores
 *.index
@@ -78,4 +76,3 @@ models/
 models/**/
 !models/.gitkeep
 .locks/
-**/models--*
